@@ -11,6 +11,9 @@ import mockit.Expectations;
 import mockit.Mocked;
 import org.junit.jupiter.api.Test;
 import org.launchcode.techjobs.persistent.controllers.EmployerController;
+import org.launchcode.techjobs.persistent.controllers.SkillController;
+import org.launchcode.techjobs.persistent.models.data.EmployerRepository;
+import org.launchcode.techjobs.persistent.models.data.SkillRepository;
 import org.launchcode.techjobs.persistent.models.Employer;
 import org.launchcode.techjobs.persistent.models.Skill;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +24,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 
 
 import java.io.IOException;
@@ -528,7 +532,7 @@ public class TestTaskTwo extends AbstractTest {
         Method displayViewSkillMethod = skillControllerClass.getMethod("displayViewSkill", Model.class, int.class);
 
         new Expectations() {{
-            skillRepository.findById(1);
+            skillRepository.findById(1L);
         }};
 
         Model model = new ExtendedModelMap();
