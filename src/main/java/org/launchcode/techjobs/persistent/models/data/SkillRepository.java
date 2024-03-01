@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SkillRepository extends CrudRepository<Skill, Long> {
-//    Iterable<Skill> findAllById(Iterable<Long> ids);
+public interface SkillRepository extends CrudRepository<Skill, Integer> {
 }
+

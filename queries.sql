@@ -12,10 +12,7 @@ CREATE TABLE job (
 
 --Part 2
 -- SQL query to select names of employers in St. Louis City
-SELECT name
-FROM employer
-WHERE location = 'St. Louis City';
-
+SELECT name FROM employer WHERE location = "St. Louis City";
 
 --Part 3
 DROP TABLE job;
@@ -27,9 +24,7 @@ DROP TABLE job;
 -- ensures only skills associated with the job are included
 --alphabetical list of names
 
-SELECT DISTINCT s.name
-FROM Skill s
-JOIN Job_Skill js ON s.id = js.skill_id
-JOIN Job j ON js.job_id = j.id
-ORDER BY s.name ASC;
-
+SELECT * FROM skill
+      LEFT JOIN job_skills ON skill.id = job_skills.skills_id
+      WHERE job_skills.jobs_id IS NOT NULL
+      ORDER BY name ASC;

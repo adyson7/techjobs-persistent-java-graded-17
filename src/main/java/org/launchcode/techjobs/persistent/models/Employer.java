@@ -12,13 +12,14 @@ import java.util.List;
 @Entity
 public class Employer extends AbstractEntity {
 
+    @JoinColumn(name="employer_id")
     @OneToMany(mappedBy = "employer")
-    @JoinColumn(name = "employer_id")
-    private List<Job> jobs;
+    private final List<Job> jobs = new ArrayList<>();
+
 
     public Employer() {
         //no-arg constructor for Hibernate to create an object
-        this.jobs = new ArrayList<>(); //initializes the jobs list
+        //this.jobs = new ArrayList<>(); //initializes the jobs list
     }
 
     @NotBlank(message = "Location is required")
@@ -33,12 +34,11 @@ public class Employer extends AbstractEntity {
         this.location = location;
     }
 
-    public List<Job> getJobs() {
-        return jobs;
-    }
-
-    public void setJobs(List<Job> jobs) {
-        this.jobs = jobs;
-    }
+//    public List<Job> getJobs() {
+//        return jobs;
+//    }
+//
+//    public void setJobs(List<Job> jobs) {
+//    }
 }
 

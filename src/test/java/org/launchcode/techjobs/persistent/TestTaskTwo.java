@@ -532,7 +532,7 @@ public class TestTaskTwo extends AbstractTest {
         Method displayViewSkillMethod = skillControllerClass.getMethod("displayViewSkill", Model.class, int.class);
 
         new Expectations() {{
-            skillRepository.findById(1L);
+            skillRepository.findById(1);
         }};
 
         Model model = new ExtendedModelMap();

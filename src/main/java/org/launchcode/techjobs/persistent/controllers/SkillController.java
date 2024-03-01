@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 
 @Controller
 @RequestMapping("skills")
@@ -42,15 +44,16 @@ public class SkillController {
     }
 
     @GetMapping("view/{skillId}")
-    //method retrieves a skill by its ID from the SkillRepository using the findById
-    public String displayViewSkill(Model model, @PathVariable int skillId) { // Change parameter type to int
-        Skill skill = skillRepository.findById((long) skillId).orElse(null); // Cast int to long
-        if (skill != null) {
+    public String displayViewSkill(Model model, @PathVariable int skillId) {
+        Optional<Skill> optionalSkill = skillRepository.findById(skillId);
+        if (optionalSkill.isPresent()) {
+            Skill skill = optionalSkill.get();
             model.addAttribute("skill", skill);
             return "skills/view";
         } else {
-            return "redirect:/";
+            return "redirect:/skills";
         }
     }
+
 }
 
